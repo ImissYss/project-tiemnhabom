@@ -1,0 +1,28 @@
+<app-header class="header"></app-header>
+<div class="header-product-info">
+  <div class="returnBtn">
+    <i (click)="backToPreviousPage()" class="fa fa-arrow-left"></i>
+  </div>
+  <div class="searchBtn">
+    <i class="fa fa-cart-arrow-down"></i>
+    <i class="fa fa-ellipsis-v"></i>
+  </div>
+</div>
+<!--<p-sidebar [(visible)]="view" position="right" [baseZIndex]="100000" [showCloseIcon]="false">-->
+<!--  <app-cart-overlay (overlayCart)="hiddenCart()"></app-cart-overlay>-->
+<!--</p-sidebar>-->
+<div class="container container--pall ok">
+  <h1>Đặt hàng thành công!</h1><br/>
+  <div style="text-align: center">
+    <span>Trong một vài phút tới nhân viên bên shop sẽ liên hệ với bạn để xác nhận lại đơn hàng</span>
+  </div>
+</div>
+<div class="contact2 container container--pall">
+  <div>
+    <button type="button">Tiếp tục mua hàng</button>
+  </div>
+  <div>Mọi thắc mắc xin liên hệ:</div>
+  <div><i class="fa fa-phone-square" style="color:limegreen; margin-right: 5px"></i> <strong>0387333535</strong></div>
+  <div><i class="fa fa-map-marker" style="color:limegreen; margin-right: 5px"></i> <strong>Thành Công - Ba Đình - Hà Nội</strong></div>
+</div>
+<app-footer></app-footer>

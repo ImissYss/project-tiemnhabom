@@ -1,0 +1,15 @@
+<div class="cart-content">
+  <div class="cart-item">
+    <img [src]="cartItem.product.productImage[0]">
+    <div>
+      <h4>{{cartItem.product.productName}}</h4>
+      <h5>{{cartItem.product.productNewPrice| currency: 'VND'}}</h5>
+      <span class="remove-item" (click)="deleteProduct(cartItem)" *ngIf="type === 'EDIT'">xóa</span>
+    </div>
+    <div>
+      <i class="fa fa-plus" (click)="plusQuantity(cartItem)" *ngIf="type === 'EDIT'"></i>
+      <p class="item-amount">{{cartItem.quantity}}</p>
+      <div [ngClass] ="cartItem.quantity>1? 'fa fa-minus': 'fa fa-minus disactive'" (click)="minusQuantity(cartItem)" [attr.disabled] = "cartItem.quantity>1" *ngIf="type === 'EDIT'">-</div>
+    </div>
+  </div>
+</div>

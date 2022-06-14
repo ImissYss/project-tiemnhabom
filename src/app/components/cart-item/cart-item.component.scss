@@ -1,0 +1,40 @@
+@import "src/variables";
+.cart-item {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
+  grid-column-gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.cart-item img {
+  width: 75px;
+  height: 75px;
+}
+.cart-item h4 {
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  color: #000;
+}
+.cart-item h5 {
+  margin: 0.5rem 0;
+  letter-spacing: 0.1rem;
+  color: #000;
+}
+.item-amount {
+  text-align: center;
+}
+.fa-plus,
+.fa-minus {
+  color: #EE4D2D;
+  cursor: pointer;
+}
+.disactive{
+  color: $grayishBlue;
+  cursor: not-allowed!important;
+  pointer-events: none;
+}
+.remove-item {
+  color: grey;
+  cursor: pointer;
+}

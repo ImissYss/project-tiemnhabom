@@ -1,0 +1,24 @@
+<div class="cart-overlay">
+  <div class="cart">
+    <span class="close-cart">
+      <i class="fa fa-window-close" aria-hidden="true" (click)="hiddenCart()"></i>
+      <div *ngIf="!cartNull">
+        <h2>Giỏ hàng của bạn</h2>
+        <app-cart-item *ngFor="let c of cartItem" [cartItem]="c" [type]="type"></app-cart-item>
+        <div class="cart-footer">
+          <h3>Tổng tiền: <span class="cart-total" style="color: #EE4D2D">{{totalPrice|currency: 'VND'}}</span></h3>
+          <button class="clear-cart banner-btn" (click)="deleteCart()">Xóa giỏ hàng</button>
+          <button class="clear-cart banner-btn" routerLink="/gio-hang" >Đến trang đặt hàng</button>
+        </div>
+      </div>
+      <div *ngIf="cartNull" style="display: flex;justify-content: center; ">
+        <img src="assets/images/cart-null.png" style="width: 90%; height: 350px">
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center" *ngIf="cartNull">
+        <div style="margin-bottom: 10px">Chưa có sản phẩm nào</div>
+        <button type="button" (click)="hiddenCart()">Tiếp tục mua hàng</button>
+      </div>
+
+    </span>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<app-header class="header" [visibleSidebar]="view"></app-header>
+<div class="header-product-info">
+  <div class="returnBtn">
+    <i (click)="backToPreviousPage()" class="fa fa-arrow-left"></i>
+  </div>
+  <div class="searchBtn">
+    <i class="fa fa-cart-arrow-down" style="position: relative" (click)="viewCart()">
+      <span class="totalItem">{{totalItems}}</span>
+    </i>
+    <i class="fa fa-ellipsis-v"></i>
+  </div>
+</div>
+<p-sidebar [(visible)]="view2" position="right" [baseZIndex]="100000" [showCloseIcon]="false">
+  <app-cart-overlay (overlayCart)="hiddenCart()"></app-cart-overlay>
+</p-sidebar>
+
+<div class="pro container" *ngIf="product">
+  <div class="pro__image">
+    <div>
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let image of imagesProducts">
+          <ng-template carouselSlide>
+            <div class="img-div" [ngStyle]="{ 'background-image': 'url(' + image + ')'}">
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+  <div class="pro__text container--pall">
+    <h1>{{product.productName}}</h1>
+    <div class="price">
+      <div class="price__curr">
+        <span class="old_price">{{product.productOldPrice | currency: 'VND'}}</span>
+        <span class="new_price">{{product.productNewPrice | currency: 'VND'}}</span>
+      </div>
+
+      <div class="count">
+        <div></div>
+        <div class="card-l">
+          <div [ngClass]="minus?'deactive':'down-btn'" [attr.disabled]="minus" (click)="minusCount()" >-</div>
+          <input type="number" class="in" [(ngModel)]="count" (change)="validateCount()"
+                 name="count"
+                 required
+                 min="1"
+          >
+          <div class="down-btn" (click)="plusCount()">+</div>
+        </div>
+        <div></div>
+      </div>
+
+    </div>
+
+<!--    <p>{{product.productDescription}}</p>-->
+    <div class="action" style="margin-top: 10px">
+      <div (click)="addToCart(product, this.count)" class="button add">
+        Thêm vào giỏ hàng
+      </div>
+      <a target="_blank" href="https://goo.gl/maps/acYRan4oW4XmuKc47" class="button viewAd" style="margin-left: 2px">
+        Địa chỉ shop
+      </a>
+    </div>
+  </div>
+</div>
+<div class="pro-info container container--pall" *ngIf="product">
+  <div class="card">
+    <p-tabView >
+      <p-tabPanel header="CÔNG DỤNG">
+        <div>
+          <p [innerHTML]="product.productDescription[0].text"></p>
+          <div class="img-div" [ngStyle]="{ 'background-image': 'url(' + product.productImage[0] + ')'}"></div>
+          <p [innerHTML]="product.productDescription[1].text"></p>
+          <div class="img-div" [ngStyle]="{ 'background-image': 'url(' + product.productImage[1] + ')'}"></div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="THÔNG TIN">
+        <div class="info-p">
+          <div class="item-i">
+            <div><strong>Xuất xứ</strong></div>
+            <div><span>{{product.origin}}</span></div>
+          </div>
+          <div class="item-i"><strong>Hạn sử dụng</strong>{{product.expiry}}</div>
+          <div class="item-i"><strong>Trọng lượng</strong>{{product.weight}}</div>
+          <div class="item-i"><strong>Kiểu đóng gói</strong>{{product.packingStyle}}</div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+  <div class="product-relation">
+    <div class="list-product-relation">
+      <div class="header-relation">
+        <div class="header-title">Sản phẩm liên quan</div>
+      </div>
+      <div class="list-item-pr">
+        <div class="seminal-product-panel" *ngFor="let product of productSame">
+          <div class="data-product" >
+            <div class="loading-product">
+            </div>
+            <div class="product-header">
+              <div class="image-pr">
+                <a [routerLink]="'/san-pham/' + product.productId" class="link-pr-detail">
+                  <img alt="product.productName" src="assets/images/lazyimg.jpg" [srcLazy]="product.productImage[0]" style="max-width: 100%; max-height: 100%; vertical-align: middle" appLazyLoadImage>
+                </a>
+              </div>
+            </div>
+            <div class="product-body">
+              <div class="pr-info">
+                <a [routerLink]="'/san-pham/' + product.productId" class="link-pr">{{product.productName}}</a>
+              </div>
+              <div class="pr-price">
+                <span class="p-price">{{product.productNewPrice | currency: 'VND'}}</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="spinner" *ngIf="spinner">
+  <div class="loader">Loading...</div>
+</div>
+
+<app-footer></app-footer>
+
+

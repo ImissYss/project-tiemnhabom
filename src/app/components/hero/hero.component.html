@@ -1,0 +1,80 @@
+<section class="hero container">
+  <div class="hero__image">
+
+  </div>
+  <div class="hero__text container--pall">
+    <h1>
+      Quầy bán thực phẩm nhập khẩu
+    </h1>
+    <p *ngIf="type === 'HOME'">
+      Để việc mua sắm trở lên dễ dàng. Tiệm Nhà Bom sẽ là điểm đến tuyệt vời để chi tiêu tiết kiệm, mua hàng nhanh chóng.
+    </p>
+    <div *ngIf="type === 'INTRODUCE' || type === 'CONTACT'" style="margin-bottom: 20px">
+      <i class="fa fa-map-marker" style="color: hsl(136, 65%, 51%); margin-right: 5px"></i>
+      <span>Số 5, G17a Thành Công - Ba Đình - Hà Nội</span>
+    </div>
+    <div class="mobile">
+      <div class="button hero__cta" *ngIf="!viewHero" (click)="viewHero = !viewHero">
+        Xem thêm <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+      <div class="button hero__cta" *ngIf="viewHero" (click)="viewHero = !viewHero">
+        Ân bớt <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section [ngClass]="viewHero? 'features': 'features-mobile'" *ngIf="type === 'HOME' || type === 'INTRODUCE'">
+  <div class="feature__content container container--pall">
+    <div class="feature__intro">
+      <h2>Tại sao chọn Tiệm Nhà Bom?</h2>
+      <p>
+        Chúng tôi cung cấp cho bạn các sản phẩm chất lượng, giá rẻ nhất thị trường cùng nhiểu ưu đãi đi kèm. Nhận hàng nhanh chóng, tiết kiệm thời gian của bạn.
+      </p>
+    </div>
+
+    <div class="feature__grid">
+      <div class="feature__item">
+        <div class="feature__icon">
+          <img src="assets/images/icon-online.svg" alt="icon-online"/>
+        </div>
+        <div class="feature__title">An toàn</div>
+        <div class="feature__description">
+          áp dụng tiêu chí nhận hàng, kiểm hàng, thanh toán với mọi đơn hàng.
+        </div>
+      </div>
+
+      <div class="feature__item">
+        <div class="feature__icon">
+          <img src="assets/images/icon-budgeting.svg" alt="icon-budgeting"/>
+        </div>
+        <div class="feature__title">Phí giao hàng rẻ</div>
+        <div class="feature__description">
+          Miễn phí cước vận chuyển 12 quận Hà Nội với mọi đơn hàng có giá trị trên 300.000đ
+        </div>
+      </div>
+
+      <div class="feature__item">
+        <div class="feature__icon">
+          <img src="assets/images/icon-onboarding.svg" alt="icon-onboarding"/>
+        </div>
+        <div class="feature__title">Vận chuyển nhanh</div>
+        <div class="feature__description">
+          Đối với mọi đơn hàng trong nội thành Hà Nội, khách hàng sẽ được hàng trong vòng 12 tiếng kể từ lúc đặt hàng. Đối với đơn hàng đi tỉnh hoặc ngoại thành sẽ nhận được hàng trong vòng 24 tiếng kể từ lúc đặt hàng.
+        </div>
+      </div>
+
+      <div class="feature__item">
+        <div class="feature__icon"><img src="assets/images/icon-api.svg" alt="icon-api"/></div>
+        <div class="feature__title">Hỗ trợ 24/24</div>
+        <div class="feature__description">
+          Mọi thắc mắc của khách hàng gửi về hộp thư fanpage của Tiệm Nhà Bom sẽ nhận được phản hồi trong vòng 5-10 phút!
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

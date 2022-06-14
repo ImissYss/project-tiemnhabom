@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Helvetica Neue;
+  src: url("assets/font/Helvetica/helveticaneue.ttf") format("opentype");
+}
+@import "globals";
+@import "variables";
+@import "header";
+@import "mixins";
+@import "animations";
+
+@import "feature";
+
+
+.swal2-popup{
+  background: rgba(0,0,0,0.5) !important;
+}
+.swal2-icon.swal2-success [class^=swal2-success-circular-line]{
+  width: 0!important;
+}
+.swal2-icon.swal2-success .swal2-success-fix{
+  width: 0!important;
+}
+.swal2-html-container{
+  color: #fff!important;
+  font-family: Helvetica Neue!important;
+}
+.swal2-title{
+  color: #fff!important;
+}
+
+
+.ngx-spinner-overlay[_ngcontent-serverApp-c16] > div[_ngcontent-serverApp-c16]:not(.loading-text){
+  width: 100px;
+  height: 100px;
+}

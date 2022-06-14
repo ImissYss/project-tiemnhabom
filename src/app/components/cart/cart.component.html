@@ -1,0 +1,71 @@
+<script>
+  fbq('track', 'Purchase');
+</script>
+<app-header class="header"></app-header>
+<div class="header-product-info container--pall">
+  <div class="returnBtn">
+    <i (click)="backToPreviousPage()" class="fa fa-arrow-left"></i>
+  </div>
+  <div class="searchBtn">
+    <i class="fa fa-ellipsis-v"></i>
+  </div>
+</div>
+<h3 class="container" style="padding: 25px">Đặt hàng và Thanh toán</h3>
+<div class="order container container--pall">
+  <div class="user">
+    <h3>
+      Thông tin người nhận
+    </h3>
+<!--    <form (ngSubmit)="onSubmit()" >-->
+      <div class="user__form">
+        <input class="form-input" [ngStyle]="(customerName === '' && isSubmitted)?{'border-color': 'red'}: {'border-color': 'hsl(233, 8%, 62%)'}" type="text" [(ngModel)]="customerName" name="customerName" placeholder="Họ và tên">
+        <input class="form-input" [ngStyle]="(customerPhone === '' && isSubmitted)?{'border-color': 'red'}: {'border-color': 'hsl(233, 8%, 62%)'} " type="number" [(ngModel)]="customerPhone" name="customerPhone" placeholder="Số điện thoại">
+        <input class="form-input"[ngStyle]="(tinh === '' && isSubmitted)?{'border-color': 'red'}: {'border-color': 'hsl(233, 8%, 62%)'} " [(ngModel)]="tinh" name="tinh" type="text" placeholder="Tỉnh/thành phố" (click) ="selectProvince()">
+        <input class="form-input"[ngStyle]="(huyen === '' && isSubmitted)?{'border-color': 'red'}: {'border-color': 'hsl(233, 8%, 62%)'} " [(ngModel)]="huyen" name="huyen" type="text" placeholder="Quận/huyện" [disabled]="validDistrict" (click)="selectDistrict()">
+        <input class="form-input"[ngStyle]="(xa === '' && isSubmitted)?{'border-color': 'red'}: {'border-color': 'hsl(233, 8%, 62%)'}" [(ngModel)]="xa" name="xa" type="text" placeholder="Phường/xã" [disabled]="validWarn" (click)="selectWarn()">
+        <input class="form-input" [(ngModel)]="sonha" type="text" placeholder="Số nhà/hẻm">
+        <textarea class="form-input" [(ngModel)]="notice" type="text" placeholder="Lưu ý cho shop"></textarea>
+      </div>
+<!--    </form>-->
+  </div>
+  <div class="products">
+    <h3>Thông tin đơn hàng</h3>
+    <app-cart-item *ngFor="let c of cartItem" [cartItem]="c" [type]="type"></app-cart-item>
+      <div class="cost-item">
+        <div class="label-c">Tổng tiền: </div>
+        <div class="cart-total">{{totalPrice|currency: 'VND'}}</div>
+      </div>
+      <div class="cost-item">
+        <div class="label-c">Phí ship: </div>
+        <div class="cart-total">{{ship|currency: 'VND'}}</div>
+      </div>
+    <div class="cost-item">
+      <div class="label-c">Tổng tiền thanh toán: </div>
+      <div class="cart-total">{{(totalPrice+ship)|currency: 'VND'}}</div>
+    </div>
+    <button type="button" class="btn-order" (click)="createOrder()">Đặt hàng</button>
+    <button type="button" class="btn-edit" (click)="updateCart()">Chỉnh sửa giỏ hàng</button>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<p-dialog [(visible)]="addressDialog" [modal]="true">
+  <p-scrollPanel [style]="{width: '100%', height: '450px'}">
+    <div class="province">
+      <div class="icons">
+        <i class="fa fa-window-close" style="float: right; cursor: pointer" (click)="closeDialog()"></i>
+      </div>
+      <input class="form-input" type="text" placeholder="Nhập tên cần tìm kiếm" [(ngModel)]="filterString">
+      <div *ngIf="chooseP">
+        <div class="province__item" *ngFor="let p of province | filter:filterString" (click)="chooseProvince(p)" >{{p}}</div>
+      </div>
+      <div *ngIf="chooseD">
+        <div class="province__item" *ngFor="let p of district | filter:filterString" (click)="chooseDistrict(p)" >{{p}}</div>
+      </div>
+      <div *ngIf="chooseW">
+        <div class="province__item" *ngFor="let p of warn | filter:filterString" (click)="chooseWarn(p)" >{{p}}</div>
+      </div>
+    </div>
+  </p-scrollPanel>
+</p-dialog>
+

@@ -1,0 +1,47 @@
+<header class="header">
+  <div class="overlay has-fade"></div>
+  <nav class="container container--pall flex flex-jc-sb flex-ai-c">
+    <div id="btnHamburger" (click)="visibileBtn()" class="header__toggle hide-for-desktop">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a href="/" class="logo">
+      <img src="assets/images/logo.png" alt="logo" style="margin-top: 5px; width: 200px"/>
+    </a>
+
+    <div class="header__links hide-for-mobile">
+      <a routerLink="/">Trang chủ</a>
+      <a routerLink="/gioi-thieu">Giới thiệu</a>
+      <a routerLink="/lien-he">Liên hệ</a>
+      <a href="/lien-he">Hỗ trợ</a>
+      <a routerLink="/">Đăng ký</a>
+    </div>
+    <i class="fa fa-cart-plus" style="color: #000; font-size: 30px; cursor: pointer" aria-hidden="true" (click)="viewCart()">
+      <span class="totalItems">{{totalItems}}</span>
+    </i>
+
+  </nav>
+  <div class="header__menu has-fade">
+    <a routerLink="/">Trang chủ</a>
+    <a routerLink="/gioi-thieu">Giới thiệu</a>
+    <a routerLink="/lien-he">Liên hệ</a>
+    <a href="/lien-he">Hỗ trợ</a>
+    <a routerLink="/">Đăng ký</a>
+  </div>
+</header>
+<div class="cart-overlay" *ngIf="visibleSidebar"></div>
+<p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000" [showCloseIcon]="false">
+    <app-cart-overlay (overlayCart)="hiddenCart()"></app-cart-overlay>
+</p-sidebar>
+<!--<div class="header-product-info" *ngIf="type === 'DETAIL'">-->
+<!--  <div class="returnBtn">-->
+<!--    <i class="fa fa-arrow-left"></i>-->
+<!--  </div>-->
+<!--  <div class="searchBtn">-->
+<!--    <i class="fa fa-cart-arrow-down" style="position: relative" (click)="viewCart()">-->
+<!--      <span class="totalItem">{{totalItems}}</span>-->
+<!--    </i>-->
+<!--    <i class="fa fa-ellipsis-v"></i>-->
+<!--  </div>-->
+<!--</div>-->

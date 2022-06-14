@@ -1,0 +1,43 @@
+<!--<app-header></app-header>-->
+<div class="signup container">
+  <div class="logo">
+    <a routerLink="/"><img src="../../../assets/images/logo-dark.svg"></a>
+  </div>
+  <div class="content">
+    <div class="panel">
+      <h3>Đăng kí</h3>
+<!--      <form (ngSubmit)="onSubmit()" [formGroup]="form">-->
+<!--        <div class="form-group">-->
+<!--          <input type="text" class="form-input" placeholder="Số điện thoại" formControlName="phone" name="phone">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <input type="password" class="form-input" placeholder="Mật khẩu" formControlName="password" name="phone">-->
+<!--          <i class="fa fa-eye" aria-hidden="true"></i>-->
+<!--          <i class="fa fa-eye-slash" aria-hidden="true"></i>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <input type="password" class="form-input" placeholder="Nhập lại mật khẩu" formControlName="matchingPassword" name="phone">-->
+<!--          <i class="fa fa-eye" aria-hidden="true"></i>-->
+<!--          <i class="fa fa-eye-slash" aria-hidden="true"></i>-->
+<!--        </div>-->
+
+<!--        <button type="submit">Đăng ký</button>-->
+<!--      </form>-->
+      <form>
+        <div class="form-group">
+          <input type="number" class="form-input" [(ngModel)]="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại">
+        </div>
+        <div id="recaptcha-container"></div>
+        <button type="button" [disabled]="disableSendOtpButton" (click)="sendOTP()">Send OTP</button>
+        <hr>
+        <div class="form-group">
+          <input type="text" class="form-input" [(ngModel)]="otp" name="otp" placeholder="Nhập mã OTP">
+        </div>
+        <button type="button" (click)="verifyOTP()">Verify OTP</button>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+<!--<app-footer></app-footer>-->

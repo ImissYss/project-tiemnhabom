@@ -1,0 +1,149 @@
+@import "src/variables";
+@import "src/mixins";
+.form-input{
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: $grayishBlue
+}
+.form-input:focus{
+  border-color: green
+}
+.user{
+  flex: 1;
+  &__form{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.875rem;
+    @include breakpoint-up(medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint-up(large) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+.products{
+  flex: 1;
+  margin-left: 10px;
+  @include breakpoint-down(medium) {
+    margin-top: 30px!important;
+  }
+}
+
+.order{
+  display: flex;
+  flex-direction: column;
+  @include breakpoint-up(large) {
+    flex-direction: row;
+  }
+}
+
+.cost-item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  .label-c{
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .cart-total{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    color: #000;
+    font-weight: 700;
+  }
+}
+:host::ng-deep{
+  .p-dialog{
+    width: 95%;
+    height: 450px;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+    background-color: white;
+  }
+  .p-dialog .p-dialog-header-icons{
+    display: none;
+  }
+  .p-dialog-draggable .p-dialog-header{
+    display: none!important;
+  }
+}
+.province{
+  padding: 20px 10px;
+  input{
+    outline: none;
+    width: 100%;
+  }
+  &__item{
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.8);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  &__item:hover{
+    background-color: #ccd2dc;
+  }
+}
+
+.header-product-info{
+  @include breakpoint-up(large){
+    display: none;
+  }
+  position: relative;
+  width: 100%;
+  height: 50px;
+  top: 5px;
+  z-index: 20;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .returnBtn{
+    width: 50px;
+    display: flex;
+    align-items: center;
+  }
+  .searchBtn{
+    width: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .fa{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccd2dc;
+    color: black;
+  }
+
+}
+.btn-order{
+  width: 38%;
+  border-radius: 20px;
+  @include breakpoint-up(medium){
+    width: 48%;
+  }
+}
+.btn-edit{
+  width: 58%;
+  margin-left: 10px;
+  border-radius: 20px;
+  @include breakpoint-up(medium){
+    width: 48%;
+  }
+}
+.header{
+  display: none;
+  @include breakpoint-up(large){
+    display: block;
+    margin-bottom: 20px;
+  }
+}

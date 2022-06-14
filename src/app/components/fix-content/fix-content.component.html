@@ -1,0 +1,16 @@
+<div class="fixed-bottom contact" *ngIf="infoShop">
+  <a [href]="'tel:+84'+ infoShop.phone.slice(1)" target="_blank" class="contact-icon">
+    <i class="pi pi-phone" style="font-size: 2rem;color: #00008B"></i>
+  </a>
+  <a [href]="infoShop.linkFanpage" target="_blank" class="contact-icon">
+    <i  class="fa fa-facebook-f" style="font-size: 2rem; color: #00008B"></i>
+  </a>
+  <a href="https://m.me/thucphamtiemnhabom" target="_blank" class="contact-icon">
+    <i title="messenger" class="fa fa-commenting-o" style="font-size: 2rem; color: #00008B"></i>
+  </a>
+  <a [href]="infoShop.linkGoogleMap" target="_blank" class="contact-icon">
+    <i class="pi pi-map-marker" style="font-size: 2rem; color: #00008B"></i>
+  </a>
+</div>
+
+

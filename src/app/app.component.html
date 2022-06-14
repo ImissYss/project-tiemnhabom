@@ -1,0 +1,13 @@
+<app-fix-content></app-fix-content>
+<router-outlet></router-outlet>
+<button *ngIf="isShow" (click)="gotoTop()"><i class="pi pi-arrow-up"></i></button>
+<div class="contact-active" *ngIf="infoShop">
+  <ul>
+    <li title="facebook"><a target="_blank" [href]="infoShop.linkFanpage"><i  class="fa fa-facebook-f" style="font-size: 25px"></i></a>
+    </li>
+    <li title="messenger"><a target="_blank" href="https://m.me/thucphamtiemnhabom"><i title="messenger" class="fa fa-commenting-o" style="font-size: 25px"></i></a>
+    </li>
+    <li title="map"><a target="_blank" [href]="infoShop.linkGoogleMap">   <i class="pi pi-map-marker" style="font-size: 25px"></i></a>
+    </li>
+  </ul>
+</div>
